@@ -1,0 +1,16 @@
+diff -up gxine-0.5.907/configure.ac.linkage gxine-0.5.907/configure.ac
+--- gxine-0.5.907/configure.ac.linkage	2012-02-21 21:14:07.000000000 +0100
++++ gxine-0.5.907/configure.ac	2013-01-23 13:32:37.122245963 +0100
+@@ -75,6 +75,12 @@ dnl ------------------------------------
+ AM_GNU_GETTEXT([external])
+ 
+ dnl ---------------------------------------------
++dnl libm, libdl
++dnl ---------------------------------------------
++AC_CHECK_LIB(m, round, [], [], [-lm])
++AC_CHECK_LIB(dl, dlsym, [], [], [-ldl])
++
++dnl ---------------------------------------------
+ dnl Checks for X11 and Xcb
+ dnl ---------------------------------------------
+ 

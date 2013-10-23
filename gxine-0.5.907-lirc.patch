@@ -1,0 +1,16 @@
+diff -up gxine-0.5.907/m4/lirc.m4.lirc gxine-0.5.907/m4/lirc.m4
+--- gxine-0.5.907/m4/lirc.m4.lirc	2010-12-05 12:38:44.000000000 +0100
++++ gxine-0.5.907/m4/lirc.m4	2013-01-23 13:41:06.534877429 +0100
+@@ -20,10 +20,10 @@ AC_DEFUN([AC_CHECK_LIRC],
+ 
+      if test "$found_lirc" = no -a x"$cross_compiling" != xyes; then
+         if test x"$LIRC_PREFIX" != "x"; then
+-           lirc_libprefix="$LIRC_PREFIX/lib"
++           lirc_libprefix="$LIRC_PREFIX/${libdir}"
+ 	   LIRC_INCLUDE="-I$LIRC_PREFIX/include"
+         fi
+-        for llirc in $lirc_libprefix /lib /usr/lib /usr/local/lib; do
++        for llirc in $lirc_libprefix ${libdir} /lib /usr/lib /usr/local/lib; do
+           AC_CHECK_FILE(["$llirc/liblirc_client.so"],
+              [LIRC_LIBS="$llirc/liblirc_client.so"]
+              AC_DEFINE([HAVE_LIRC],,[Define this if you have LIRC (liblirc_client) installed]),
