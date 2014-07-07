@@ -1,6 +1,6 @@
 Name:           gxine
-Version:        0.5.907
-Release:        11%{?dist}
+Version:        0.5.908
+Release:        1%{?dist}
 Summary:        GTK frontend for the xine multimedia library
 
 License:        GPLv2+
@@ -10,10 +10,6 @@ Source0:        http://downloads.sourceforge.net/xine/%{name}-%{version}.tar.xz
 Patch1:         gxine-0.5.902-non-separate-toolbar.patch
 # some multilib issues
 Patch3:         gxine-0.5.907-lirc.patch
-# fix linkage (hg 2275)
-Patch4:         gxine-0.5.907-linkage.patch
-# including individual glib headers no longer supported (hg 2276)
-Patch5:         gxine-0.5.907-glib.patch
 
 BuildRequires:  js-devel
 BuildRequires:  desktop-file-utils
@@ -57,8 +53,6 @@ This plugin allows gxine to be embedded in a web browser.
 
 %patch1 -p1 -b .non-separate-toolbar
 %patch3 -p1 -b .lirc
-%patch4 -p1 -b .linkage
-%patch5 -p1 -b .glib
 
 %{__sed} -i 's/Name=gxine/Name=GXine/' gxine.desktop.in
 autoreconf -if
@@ -74,7 +68,6 @@ make %{?_smp_mflags}
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %make_install
 
 # Remove .las
@@ -125,6 +118,9 @@ fi
 %{_libdir}/mozilla/plugins/gxineplugin.so
 
 %changelog
+* Mon Jul 07 2014 Xavier Bachelot <xavier@bachelot.org> - 0.5.908-1
+- Update to 0.5.908.
+
 * Wed Oct 23 2013 Xavier Bachelot <xavier@bachelot.org> - 0.5.907-11
 - Rebuild for xine-lib 1.2.
 
