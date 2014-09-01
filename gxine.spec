@@ -1,6 +1,6 @@
 Name:           gxine
 Version:        0.5.908
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        GTK frontend for the xine multimedia library
 
 License:        GPLv2+
@@ -118,6 +118,9 @@ fi
 %{_libdir}/mozilla/plugins/gxineplugin.so
 
 %changelog
+* Mon Sep 01 2014 Sérgio Basto <sergio@serjux.com> - 0.5.908-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Mon Jul 07 2014 Xavier Bachelot <xavier@bachelot.org> - 0.5.908-1
 - Update to 0.5.908.
 
