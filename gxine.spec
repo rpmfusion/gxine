@@ -1,6 +1,6 @@
 Name:           gxine
 Version:        0.5.908
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        GTK frontend for the xine multimedia library
 
 License:        GPLv2+
@@ -118,6 +118,9 @@ fi
 %{_libdir}/mozilla/plugins/gxineplugin.so
 
 %changelog
+* Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 0.5.908-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Sun Mar 19 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 0.5.908-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
