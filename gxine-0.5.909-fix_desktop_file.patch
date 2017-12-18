@@ -1,0 +1,19 @@
+
+# HG changeset patch
+# User Petri Hintukainen <phintuka@users.sourceforge.net>
+# Date 1500574448 -10800
+# Node ID 317362021aae2d51a9c3f4940cee483dfcd38418
+# Parent  6303e64322ef2c8ac4c9dedf004616fb5455ec8e
+Fix desktop file
+
+diff -r 6303e64322ef -r 317362021aae gxine.desktop.in
+--- a/gxine.desktop.in	Tue Jul 18 13:08:12 2017 +0300
++++ b/gxine.desktop.in	Thu Jul 20 21:14:08 2017 +0300
+@@ -15,4 +15,4 @@
+ Type=Application
+ StartupNotify=true
+ Categories=AudioVideo;Video;GTK;Player;TV;
+-MimeType=x-content/video-dvd;x-content/audio-cdda;x-content/video-vcd;x-content/video-svcd;
++MimeType=x-content/video-dvd;x-content/audio-cdda;x-content/video-vcd;x-content/video-svcd;
+\ No newline at end of file
+
