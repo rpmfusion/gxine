@@ -1,5 +1,5 @@
 Name:           gxine
-Version:        0.5.908
+Version:        0.5.909
 Release:        1%{?dist}
 Summary:        GTK frontend for the xine multimedia library
 
@@ -10,6 +10,8 @@ Source0:        http://downloads.sourceforge.net/xine/%{name}-%{version}.tar.xz
 Patch1:         gxine-0.5.902-non-separate-toolbar.patch
 # some multilib issues
 Patch3:         gxine-0.5.907-lirc.patch
+# HG 2435
+Patch4:         gxine-0.5.909-fix_desktop_file.patch
 
 BuildRequires:  js-devel
 BuildRequires:  desktop-file-utils
@@ -53,6 +55,7 @@ This plugin allows gxine to be embedded in a web browser.
 
 %patch1 -p1 -b .non-separate-toolbar
 %patch3 -p1 -b .lirc
+%patch4 -p1 -b .desktopfile
 
 %{__sed} -i 's/Name=gxine/Name=GXine/' gxine.desktop.in
 autoreconf -if
@@ -100,6 +103,7 @@ fi
 %files -f %{name}.lang
 %doc AUTHORS ChangeLog COPYING README TODO
 %dir %{_sysconfdir}/gxine/
+%config(noreplace) %{_sysconfdir}/gxine/gtk.css
 %config(noreplace) %{_sysconfdir}/gxine/gtkrc
 %config(noreplace) %{_sysconfdir}/gxine/keypad.xml
 %config(noreplace) %{_sysconfdir}/gxine/startup
@@ -118,6 +122,18 @@ fi
 %{_libdir}/mozilla/plugins/gxineplugin.so
 
 %changelog
+* Mon Dec 18 2017 Xavier Bachelot <xavier@bachelot.org> - 0.5.909-1
+- Update to 0.5.909.
+
+* Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 0.5.908-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+* Sun Mar 19 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 0.5.908-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+* Mon Sep 01 2014 Sérgio Basto <sergio@serjux.com> - 0.5.908-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
 * Mon Jul 07 2014 Xavier Bachelot <xavier@bachelot.org> - 0.5.908-1
 - Update to 0.5.908.
 
