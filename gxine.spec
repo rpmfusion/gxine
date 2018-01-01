@@ -1,8 +1,7 @@
 Name:           gxine
-Version:        0.5.909
+Version:        0.5.910
 Release:        1%{?dist}
 Summary:        GTK frontend for the xine multimedia library
-
 License:        GPLv2+
 URL:            http://www.xine-project.org/home
 Source0:        http://downloads.sourceforge.net/xine/%{name}-%{version}.tar.xz
@@ -10,8 +9,6 @@ Source0:        http://downloads.sourceforge.net/xine/%{name}-%{version}.tar.xz
 Patch1:         gxine-0.5.902-non-separate-toolbar.patch
 # some multilib issues
 Patch3:         gxine-0.5.907-lirc.patch
-# HG 2435
-Patch4:         gxine-0.5.909-fix_desktop_file.patch
 
 BuildRequires:  js-devel
 BuildRequires:  desktop-file-utils
@@ -34,34 +31,33 @@ BuildRequires:  nspr-devel
 # for linkage patch
 BuildRequires:  libtool
 
+
 %description
 gxine is a fully-featured free audio/video player for unix-like systems which
-uses libxine for audio/video decoding and playback. For more informations on
+uses libxine for audio/video decoding and playback. For more information on
 what formats are supported, please refer to the libxine documentation.
 gxine is a gtk based gui for this xine-library alternate to xine-ui.
 
+
 %package mozplugin
 Summary:  Mozilla plugin for gxine
-Group:    Applications/Internet
 Requires: %{name} = %{version}-%{release}
 Requires: mozilla-filesystem
 
 %description mozplugin
 This plugin allows gxine to be embedded in a web browser.
 
+
 %prep
-
 %setup -q
-
 %patch1 -p1 -b .non-separate-toolbar
 %patch3 -p1 -b .lirc
-%patch4 -p1 -b .desktopfile
 
 %{__sed} -i 's/Name=gxine/Name=GXine/' gxine.desktop.in
 autoreconf -if
 
-%build
 
+%build
 %configure --with-dbus --with-logo-format=image --with-gudev \
   --with-browser-plugin --disable-integration-wizard         \
   --enable-watchdog  --disable-own-playlist-parsers          \
@@ -87,6 +83,7 @@ desktop-file-install --delete-original \
   --mode 0644                                            \
   %{buildroot}%{_datadir}/applications/%{name}.desktop
 
+
 %post
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
 
@@ -101,7 +98,8 @@ fi
 
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog COPYING README TODO
+%license COPYING
+%doc AUTHORS ChangeLog README TODO
 %dir %{_sysconfdir}/gxine/
 %config(noreplace) %{_sysconfdir}/gxine/gtk.css
 %config(noreplace) %{_sysconfdir}/gxine/gtkrc
@@ -118,10 +116,15 @@ fi
 %{_datadir}/applications/*gxine.desktop
 
 %files mozplugin
-%doc COPYING
+%license COPYING
 %{_libdir}/mozilla/plugins/gxineplugin.so
 
+
 %changelog
+* Sun Dec 31 2017 Xavier Bachelot <xavier@bachelot.org> - 0.5.910-1
+- Update to 0.5.910.
+- Specfile cleanup.
+
 * Mon Dec 18 2017 Xavier Bachelot <xavier@bachelot.org> - 0.5.909-1
 - Update to 0.5.909.
 
