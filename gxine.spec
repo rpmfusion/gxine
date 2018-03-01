@@ -1,6 +1,6 @@
 Name:           gxine
 Version:        0.5.910
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        GTK frontend for the xine multimedia library
 License:        GPLv2+
 URL:            http://www.xine-project.org/home
@@ -121,6 +121,9 @@ fi
 
 
 %changelog
+* Thu Mar 01 2018 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 0.5.910-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Sun Dec 31 2017 Xavier Bachelot <xavier@bachelot.org> - 0.5.910-1
 - Update to 0.5.910.
 - Specfile cleanup.
