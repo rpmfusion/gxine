@@ -1,3 +1,5 @@
+%bcond_with gtk3
+
 Name:           gxine
 Version:        0.5.910
 Release:        2%{?dist}
@@ -10,10 +12,15 @@ Patch1:         gxine-0.5.902-non-separate-toolbar.patch
 # some multilib issues
 Patch3:         gxine-0.5.907-lirc.patch
 
+BuildRequires:  gcc
 BuildRequires:  js-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
+%if %{with gtk3}
+BuildRequires:  gtk3-devel
+%else
 BuildRequires:  gtk2-devel
+%endif
 Buildrequires:  xine-lib-devel
 
 # for dbus support
@@ -61,7 +68,10 @@ autoreconf -if
 %configure --with-dbus --with-logo-format=image --with-gudev \
   --with-browser-plugin --disable-integration-wizard         \
   --enable-watchdog  --disable-own-playlist-parsers          \
-  --disable-deprecated
+  --disable-deprecated \
+%if %{with gtk3}
+  --with-gtk3
+%endif
 
 make %{?_smp_mflags}
 
@@ -121,6 +131,10 @@ fi
 
 
 %changelog
+* Fri Jul 20 2018 Xavier Bachelot <xavier@bachelot.org> - 0.5.910-3
+- Add BR: gcc.
+- Add conditional for building against GTK3.
+
 * Thu Mar 01 2018 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 0.5.910-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
